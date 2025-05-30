@@ -85,4 +85,5 @@ jobs:
           app-name: 'proyectoFinal'
           slot-name: 'Production'
           package: .
+          remove-app-service-artifacts: true
           
