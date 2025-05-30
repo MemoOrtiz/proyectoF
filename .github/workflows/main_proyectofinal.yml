@@ -60,6 +60,9 @@ jobs:
 
       - name: Unzip artifact for deployment
         run: unzip release.zip
+        # Borra aquí cualquier archivo por defecto que no quieras desplegar
+      - name: Remove default hostingstart.html
+        run: rm -f hostingstart.html
       
       - name: Login to Azure
         uses: azure/login@v2
