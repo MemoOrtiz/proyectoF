@@ -67,6 +67,13 @@ jobs:
           client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_79EA6E3413A34051833EF5709446D150 }}
           tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_06044988F2284DDCA30D923FAF31564E }}
           subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_1093205F1ADD4E16924AF3A6B4EDDDB6 }}
+          # ← Aquí inyectamos el borrado
+      - name: Delete hostingstart.html from wwwroot
+        run: |
+          az webapp ssh \
+            --name proyectoFinal \
+            --resource-group ProyectoFinal7amComputo \
+            --command "rm -f /home/site/wwwroot/hostingstart.html" || echo "nothing to delete"
 
       - name: 'Deploy to Azure Web App'
         uses: azure/webapps-deploy@v3
